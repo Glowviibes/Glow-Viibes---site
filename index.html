@@ -1,105 +1,25 @@
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Glow Viibes</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .stars {
-      width: 100%;
-      height: 100%;
-      background: transparent url('https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif') repeat top center;
-      position: fixed;
-      z-index: -1;
-      animation: moveStars 200s linear infinite;
-    }
-
-    @keyframes moveStars {
-      from { background-position: 0 0; }
-      to { background-position: 10000px 5000px; }
-    }
-
-    .logo {
-      margin-top: 30px;
-    }
-
-    .logo img {
-      width: 80px;
-    }
-
-    h1 {
-      font-size: 3em;
-      background: linear-gradient(-45deg, #ff00cc, #3333ff, #ff00cc, #3333ff);
-      background-size: 400% 400%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradient 5s ease infinite;
-    }
-
-    p {
-      font-size: 1.2em;
-      margin-bottom: 40px;
-    }
-
-    .button {
-      display: inline-block;
-      margin: 10px;
-      padding: 15px 40px;
-      font-size: 1.1em;
-      border: none;
-      border-radius: 30px;
-      color: white;
-      background: linear-gradient(90deg, #ff00cc, #3333ff);
-      background-size: 200% auto;
-      cursor: pointer;
-      animation: gradient 3s ease infinite;
-      text-decoration: none;
-    }
-
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .girl {
-      margin-top: 30px;
-    }
-
-    .girl img {
-      width: 200px;
-      border-radius: 12px;
-      border: 2px solid #ff00cc;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="stars"></div>
 
-  <div class="logo">
-    <img src="logo.jpg" alt="Glow Viibes Logo">
-  </div>
+  <div class="container">
+    <img src="logo.png" alt="Glow Viibes Logo" class="logo" />
+    <h1>Glow Viibes</h1>
+    <p>Brilhe com estilo!</p>
 
-  <h1>Glow Viibes</h1>
-  <p>Brilhe com estilo!</p>
+    <button onclick="location.href='https://glowviibes.com/produto1'">Produto 1</button>
+    <button onclick="location.href='https://glowviibes.com/produto2'">Produto 2</button>
+    <button onclick="location.href='https://glowviibes.com/produto3'">Produto 3</button>
 
-  <a href="#" class="button">Produto 1</a>
-  <a href="#" class="button">Produto 2</a>
-  <a href="#" class="button">Produto 3</a>
-
-  <div class="girl">
-    <img src="sua-imagem.png" alt="Garota com Top Glow Viibes">
+    <br /><br />
+    <img src="modelo.png" alt="Garota com Top Glow Viibes" class="model-image" />
   </div>
 </body>
 </html>
