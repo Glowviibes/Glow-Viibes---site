@@ -1,48 +1,51 @@
 
-const canvas = document.getElementById('stars');
-const ctx = canvas.getContext('2d');
-let stars = [];
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-function initStars() {
-  stars = [];
-  for (let i = 0; i < 100; i++) {
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 1.5,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5
-    });
-  }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: black;
+  overflow: hidden;
+  position: relative;
+  color: white;
+  text-align: center;
 }
 
-function drawStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'white';
-  for (let star of stars) {
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-    ctx.fill();
-  }
+.stars {
+  width: 100%;
+  height: 100%;
+  background: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png');
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: moveStars 100s linear infinite;
+  z-index: -1;
+  opacity: 0.4;
 }
 
-function updateStars() {
-  for (let star of stars) {
-    star.x += star.vx;
-    star.y += star.vy;
-    if (star.x < 0 || star.x > canvas.width) star.vx *= -1;
-    if (star.y < 0 || star.y > canvas.height) star.vy *= -1;
-  }
+@keyframes moveStars {
+  0% { background-position: 0 0; }
+  100% { background-position: 10000px 10000px; }
 }
 
-function animate() {
-  drawStars();
-  updateStars();
-  requestAnimationFrame(animate);
+.container {
+  padding-top: 50px;
+  z-index: 2;
+  position: relative;
 }
 
-initStars();
-animate();
+h1 {
+  font-size: 48px;
+  color: fuchsia;
+  animation: gradientText 3s ease infinite alternate;
+}
+
+@keyframes gradientText {
+  0% { color: fuchsia; }
+  100% { color: #5500ff; }
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
