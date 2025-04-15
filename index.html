@@ -1,24 +1,126 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Glow Viibes</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: black;
+      color: white;
+      overflow: hidden;
+    }
+
+    canvas#stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .container {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    img {
+      width: 100px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      background: linear-gradient(90deg, #ff00ff, #4B00FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      margin-bottom: 30px;
+      font-size: 1.1em;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 40px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1em;
+      color: white;
+      cursor: pointer;
+      background: linear-gradient(90deg, #ff00ff, #4B00FF);
+      animation: gradientMove 5s infinite linear;
+      text-decoration: none;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+  </style>
 </head>
 <body>
   <canvas id="stars"></canvas>
   <div class="container">
-    <img src="logo.jpg" alt="Glow Viibes Logo" class="logo">
+    <img src="sua-imagem.png" alt="Glow Viibes Logo" />
     <h1>Glow Viibes</h1>
     <p>Brilhe com estilo!</p>
-    <div class="buttons">
-      <a href="https://glowviibes.com/produto1" class="btn">Produto 1</a>
-      <a href="https://glowviibes.com/produto2" class="btn">Produto 2</a>
-      <a href="https://glowviibes.com/produto3" class="btn">Produto 3</a>
-    </div>
+    <a class="button" href="#">Produto 1</a>
+    <a class="button" href="#">Produto 2</a>
+    <a class="button" href="#">Produto 3</a>
   </div>
-  <script src="stars.js"></script>
+
+  <script>
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+      stars = [];
+      for (let i = 0; i < 100; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5,
+          speed: Math.random() * 0.5 + 0.2
+        });
+      }
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "white";
+      for (const star of stars) {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      }
+      requestAnimationFrame(animateStars);
+    }
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      createStars();
+    });
+
+    resizeCanvas();
+    createStars();
+    animateStars();
+  </script>
 </body>
 </html>
+
