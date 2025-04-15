@@ -1,13 +1,15 @@
+/* Garante que o corpo tenha fundo preto */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: black;
+  background-color: black; /* Fundo preto */
   overflow: hidden;
   position: relative;
   color: white;
   text-align: center;
 }
 
+/* Estrelas animadas ao fundo */
 .stars {
   width: 100%;
   height: 100%;
@@ -17,21 +19,23 @@ body {
   top: 0;
   left: 0;
   animation: moveStars 100s linear infinite;
-  z-index: -1;
+  z-index: -1; /* Para ficar atrás do conteúdo */
   opacity: 0.4;
 }
 
 @keyframes moveStars {
-  0% {background-position: 0 0;}
-  100% {background-position: 10000px 10000px;}
+  0% { background-position: 0 0; }
+  100% { background-position: 10000px 10000px; }
 }
 
+/* Contêiner do conteúdo */
 .container {
   padding-top: 50px;
   z-index: 2;
   position: relative;
 }
 
+/* Estilo do título */
 h1 {
   font-size: 48px;
   color: fuchsia;
@@ -43,11 +47,13 @@ h1 {
   100% { color: #5500ff; }
 }
 
+/* Estilo do parágrafo */
 p {
   font-size: 18px;
   margin-bottom: 30px;
 }
 
+/* Logo (ajuste a imagem para a sua logo específica) */
 .logo,
 .model-image {
   max-width: 200px;
@@ -55,19 +61,21 @@ p {
   margin-bottom: 20px;
 }
 
+/* Estilo dos botões */
 button {
   margin: 10px;
   padding: 15px 30px;
   font-size: 18px;
   border: none;
   border-radius: 30px;
-  background: linear-gradient(90deg, fuchsia, blue);
+  background: linear-gradient(90deg, fuchsia, blue); /* Degradê no fundo */
   color: white;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease;
   animation: animateBtn 3s ease-in-out infinite alternate;
 }
 
+/* Efeito de hover no botão */
 button:hover {
   transform: scale(1.05);
 }
@@ -76,4 +84,5 @@ button:hover {
   0% { background: linear-gradient(90deg, fuchsia, blue); }
   100% { background: linear-gradient(90deg, blue, fuchsia); }
 }
+
 
