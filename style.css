@@ -1,107 +1,95 @@
+/* Fundo com estrelas animadas */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Outfit', sans-serif;
-  overflow-x: hidden;
-  background: black;
-  color: white;
-  position: relative;
+  background: #000;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  text-align: center;
 }
 
-/* Estrelas animadas */
-.stars, .stars2, .stars3 {
+.stars {
   position: fixed;
   width: 100%;
   height: 100%;
-  top: 0; left: 0;
-  background: transparent url('https://raw.githubusercontent.com/kognise/water.css/master/docs/images/bg-stars.png') repeat;
-  z-index: 0;
+  background: url("https://raw.githubusercontent.com/lokesh-coder/pretty-checkbox/master/docs/images/bg-stars.gif") repeat;
+  z-index: -1;
   animation: moveStars 100s linear infinite;
-  opacity: 0.4;
-}
-.stars2 {
-  background-size: 2px 2px;
-  animation-duration: 200s;
-  opacity: 0.3;
-}
-.stars3 {
-  background-size: 1px 1px;
-  animation-duration: 300s;
-  opacity: 0.2;
-}
-@keyframes moveStars {
-  from {background-position: 0 0;}
-  to {background-position: -10000px 5000px;}
 }
 
-main {
-  z-index: 1;
-  position: relative;
+@keyframes moveStars {
+  0% {background-position: 0 0;}
+  100% {background-position: 1000px 1000px;}
+}
+
+/* Header com logo e nome */
+.logo {
+  width: 100px;
+  margin: 30px auto 10px;
+}
+
+.glow {
+  font-size: 24px;
+  font-weight: bold;
+  animation: pulse 1.5s infinite alternate, glowColor 3s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+@keyframes glowColor {
+  0% { color: #ff66c4; }
+  50% { color: #00f0ff; }
+  100% { color: #8e44ad; }
+}
+
+/* Container dos links */
+.link-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 16px;
   padding: 40px 20px;
 }
 
-.logo {
-  width: 120px;
-  margin-bottom: 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-}
-
-.titulo {
-  font-size: 28px;
-  font-weight: bold;
-  animation: corPisca 3s infinite;
-}
-
-@keyframes corPisca {
-  0% { color: #ff00cc; }
-  33% { color: #ffcc00; }
-  66% { color: #00ffff; }
-  100% { color: #ff00cc; }
-}
-
-.botoes {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-  max-width: 400px;
-}
-
-.botao {
+/* Botões de produto */
+.product-button {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 15px 20px;
-  background: linear-gradient(45deg, #ff00cc, #ffcc00, #00ffff);
-  background-size: 400% 400%;
-  animation: animBackground 5s ease infinite;
+  gap: 10px;
+  background: linear-gradient(270deg, #ff66c4, #00f0ff, #8e44ad);
+  background-size: 600% 600%;
+  animation: gradientShift 6s ease infinite;
   border: none;
-  border-radius: 12px;
-  color: black;
-  font-size: 18px;
-  font-weight: bold;
+  padding: 12px 20px;
+  color: white;
   text-decoration: none;
+  border-radius: 12px;
+  font-size: 18px;
+  box-shadow: 0 0 10px #00000070;
   transition: transform 0.2s ease;
 }
-.botao:hover {
+
+.product-button:hover {
   transform: scale(1.05);
 }
 
-@keyframes animBackground {
+/* Imagem dos produtos */
+.product-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Animação de fundo dos botões */
+@keyframes gradientShift {
   0% {background-position: 0% 50%;}
   50% {background-position: 100% 50%;}
   100% {background-position: 0% 50%;}
 }
 
-.imagem-produto {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  object-fit: cover;
-}
 
