@@ -1,157 +1,107 @@
-/* Fundo com estrelas animadas */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0d0d0d;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
   overflow-x: hidden;
-  color: #fff;
+  background: black;
+  color: white;
   position: relative;
 }
 
-.stars,
-.stars2,
-.stars3 {
+/* Estrelas animadas */
+.stars, .stars2, .stars3 {
   position: fixed;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
-  background-repeat: repeat;
-  background-size: contain;
+  top: 0; left: 0;
+  background: transparent url('https://raw.githubusercontent.com/kognise/water.css/master/docs/images/bg-stars.png') repeat;
   z-index: 0;
-}
-
-.stars {
-  background-image: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png');
   animation: moveStars 100s linear infinite;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 .stars2 {
-  background-image: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png');
-  animation: moveStars 150s linear infinite;
-  opacity: 0.2;
+  background-size: 2px 2px;
+  animation-duration: 200s;
+  opacity: 0.3;
 }
 .stars3 {
-  background-image: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png');
-  animation: moveStars 200s linear infinite;
-  opacity: 0.1;
+  background-size: 1px 1px;
+  animation-duration: 300s;
+  opacity: 0.2;
 }
-
 @keyframes moveStars {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 10000px 10000px;
-  }
+  from {background-position: 0 0;}
+  to {background-position: -10000px 5000px;}
 }
 
-/* Cabeçalho */
-header {
-  text-align: center;
-  padding: 40px 20px 20px;
+main {
+  z-index: 1;
   position: relative;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
 }
 
 .logo {
-  font-size: 2.5rem;
-  background: linear-gradient(90deg, #e600ff, #00f2ff, #e600ff);
-  background-size: 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientText 5s infinite linear;
+  width: 120px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
-@keyframes gradientText {
-  0% {
-    background-position: 0%;
-  }
-  100% {
-    background-position: 100%;
-  }
+.titulo {
+  font-size: 28px;
+  font-weight: bold;
+  animation: corPisca 3s infinite;
 }
 
-.tag {
-  font-size: 1.2rem;
-  color: #fff;
-  animation: glow 1s infinite alternate, colorShift 3s infinite alternate;
+@keyframes corPisca {
+  0% { color: #ff00cc; }
+  33% { color: #ffcc00; }
+  66% { color: #00ffff; }
+  100% { color: #ff00cc; }
 }
 
-@keyframes glow {
-  from {
-    text-shadow: 0 0 5px #fff;
-  }
-  to {
-    text-shadow: 0 0 15px #00f2ff;
-  }
-}
-
-@keyframes colorShift {
-  0% {
-    color: #e600ff;
-  }
-  100% {
-    color: #00f2ff;
-  }
-}
-
-/* Botões */
-main {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-  z-index: 2;
-  position: relative;
-}
-
-.button-container {
+.botoes {
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 80%;
+  width: 100%;
   max-width: 400px;
 }
 
-.product-button {
+.botao {
   display: flex;
   align-items: center;
   gap: 15px;
-  background: linear-gradient(45deg, #e600ff, #00f2ff, #e600ff);
-  background-size: 300%;
-  animation: buttonAnim 5s infinite linear;
-  padding: 15px;
+  padding: 15px 20px;
+  background: linear-gradient(45deg, #ff00cc, #ffcc00, #00ffff);
+  background-size: 400% 400%;
+  animation: animBackground 5s ease infinite;
+  border: none;
   border-radius: 12px;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
   text-decoration: none;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
-
-.product-button:hover {
+.botao:hover {
   transform: scale(1.05);
 }
 
-.product-button img {
-  width: 50px;
-  height: 50px;
+@keyframes animBackground {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.imagem-produto {
+  width: 40px;
+  height: 40px;
   border-radius: 8px;
   object-fit: cover;
 }
-
-.product-button a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-@keyframes buttonAnim {
-  0% {
-    background-position: 0%;
-  }
-  100% {
-    background-position: 300%;
-  }
-}
-
-
 
